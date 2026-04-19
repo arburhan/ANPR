@@ -1,111 +1,80 @@
-# Automatic Number Plate Recognition in Adverse Environmental Conditions using Hybrid Deep Learning Models
+# Bangladeshi ANPR - Adverse Conditions
 
-**Undergraduate Thesis Project**  
-**Varendra University** | Department of Computer Science and Engineering
+**Automatic Number Plate Recognition in Adverse Environmental Conditions using Hybrid Deep Learning Models**
+
+Undergraduate Thesis Project  
+**Varendra University**, Department of Computer Science and Engineering
 
 ---
 
 ## 📋 Project Overview
 
-This research aims to improve **Automatic Number Plate Recognition (ANPR)** accuracy in challenging real-world conditions such as **rain, fog, dust, glare, low illumination, and blur** — which are very common in Bangladesh.
+This project aims to build a robust **ANPR system** that performs well in challenging Bangladeshi weather conditions such as **rain, fog, blur, glare, low light, and dust**.
 
-We propose a **Hybrid Deep Learning Model** combining **Convolutional Neural Networks (CNN)** for local feature extraction and **Vision Transformer (ViT)** for global context understanding to achieve better robustness in adverse environments.
-
----
-
-## 🎯 Objectives
-
-- Develop a robust ANPR system for adverse environmental conditions
-- Create and augment a dataset simulating real-world challenges (rain, fog, blur, low light, etc.)
-- Design a **Hybrid CNN + Vision Transformer** model for better accuracy
-- Compare performance with baseline models (YOLOv8)
-- Optimize the model for low-resource edge devices
+**Main Contribution**:  
+Hybrid **CNN + Vision Transformer (ViT)** model combined with **BanglaBERT** for accurate Bangla license plate recognition.
 
 ---
 
 ## 📁 Project Structure
 
 ```
-Thesis_ANPR/
+ANPR/
+├── README.md
+├── requirements.txt
+├── notebooks/                          # All Colab notebooks
+│   ├── 01_Data_Split_and_YAML.ipynb
+│   ├── 02_YOLOv8_Baseline_Training.ipynb
+│   ├── 03_Data_Augmentation.ipynb
+│   ├── 04_Plate_Cropping.ipynb
+│   └── 05_ViT_BanglaBERT_Recognition.ipynb
 ├── dataset/
-│   └── split_anpr/
+│   └── split_anpr/                    # Train & Val split
+│       ├── data.yaml
 │       ├── train/
 │       │   ├── images/
 │       │   └── labels/
 │       └── val/
 │           ├── images/
 │           └── labels/
-├── models/
+├── models/                             # Trained YOLOv8 weights
 │   ├── yolov8n_baseline_best.pt
 │   └── predictions_baseline/
-├── cropped_plates_test/
-├── runs/                    # YOLO training results
-├── notebooks/               # Colab notebooks
-│   ├── 01_data_preparation.ipynb
-│   ├── 02_training_baseline.ipynb
-│   ├── 03_augmentation.ipynb
-│   └── 04_vit_recognition.ipynb
-├── requirements.txt
-└── README.md
+├── cropped_plates/                     # Cropped license plates
+│   └── (cropped images)
+├── src/                                # Python scripts
+│   └── augmentation.py
+└── results/                            # Prediction outputs & graphs
+    └── (graphs, confusion matrix, etc.)
 ```
 
----
+## 🛠️ Technologies & Methods
 
-## 🛠️ Technologies Used
+- **Detection**: YOLOv8n (Ultralytics)
+- **Augmentation**: Albumentations (Rain, Fog, Blur, Glare, Low Light)
+- **Recognition**: Hybrid **ViT (Encoder) + BanglaBERT (Decoder)**
+- **Framework**: PyTorch, Hugging Face Transformers
+- **Environment**: Google Colab (GPU)
 
-- **Detection**: YOLOv8 (Ultralytics)
-- **Recognition**: Vision Transformer (ViT) + BanglaBERT (Hybrid Model)
-- **Augmentation**: Albumentations
-- **Framework**: PyTorch, TensorFlow
-- **Tools**: Google Colab, OpenCV, Hugging Face Transformers
+## 📊 Current Progress
 
----
+- ✅ Dataset split & YAML configuration
+- ✅ YOLOv8n Baseline Training completed
+  - mAP50: **0.993**
+  - mAP50-95: **0.612**
+- ✅ Plate detection & cropping pipeline
+- ✅ Initial ViT + BanglaBERT testing (in progress)
+- ⏳ Adverse condition augmentation
+- ⏳ Full Hybrid Model Fine-tuning
 
-## 📊 Current Results (Baseline)
+## 📚 Datasets Used
 
-- **Model**: YOLOv8n
-- **mAP50**: 0.993
-- **mAP50-95**: 0.612
-- **Precision**: 0.98
-- **Recall**: 0.975
+- **Main Dataset**: [Bangladeshi Number Plate - Rajshahi City](https://www.kaggle.com/datasets/mdborhanuddinashik/bangladeshi-number-platte-rajshahi-city)
+- **Additional Dataset**: [Bangladeshi Vehicle License Plate](https://www.kaggle.com/datasets/sifatkhan69/bangladeshi-vehicle-license-plate)
 
-The baseline model shows excellent plate detection capability but needs improvement in adverse conditions and character recognition.
+## 🚀 How to Run
 
----
-
-## 🚀 Future Work
-
-- Strong data augmentation for adverse weather conditions
-- Fine-tuning of **ViT + BanglaBERT** for Bangla license plate recognition
-- Performance comparison between baseline and hybrid model
-- Deployment on edge devices (Jetson Nano / Raspberry Pi)
-- Real-time testing in actual Bangladeshi traffic scenarios
-
----
-
-## 👥 Team Members
-
-- Md. Borhan Uddin Ashik (Me)
-- MD MAHEDI HASAN
-- AFIA AKHTER
-
-**Supervisor**: Md. Mahfujur Rahman  
-**Varendra University**, Department of CSE
-
----
-
-## 📄 Thesis Documents
-
-- [Thesis Proposal](./Thesis_Proposal.pdf) (now not available)
-- [Presentation Slides](./presentation.pdf)
-
----
-
-## 📞 Contact
-
-- **Email**: [223311161@vu.edu.bd]
-- **GitHub**: [github.com/arburhan]
-
----
-
-**Made with ❤️ for smarter traffic management in Bangladesh**
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/arburhan/ANPR.git
+   ```
