@@ -25,27 +25,29 @@ We propose a **Hybrid Deep Learning Model** combining **Convolutional Neural Net
 
 ## 📁 Project Structure
 
+```
 Thesis_ANPR/
 ├── dataset/
-│ └── split_anpr/
-│ ├── train/
-│ │ ├── images/
-│ │ └── labels/
-│ └── val/
-│ ├── images/
-│ └── labels/
+│   └── split_anpr/
+│       ├── train/
+│       │   ├── images/
+│       │   └── labels/
+│       └── val/
+│           ├── images/
+│           └── labels/
 ├── models/
-│ ├── yolov8n_baseline_best.pt
-│ └── predictions_baseline/
+│   ├── yolov8n_baseline_best.pt
+│   └── predictions_baseline/
 ├── cropped_plates_test/
-├── runs/ # YOLO training results
-├── notebooks/ # Colab notebooks
-│ ├── 01_data_preparation.ipynb
-│ ├── 02_training_baseline.ipynb
-│ ├── 03_augmentation.ipynb
-│ └── 04_vit_recognition.ipynb
+├── runs/                    # YOLO training results
+├── notebooks/               # Colab notebooks
+│   ├── 01_data_preparation.ipynb
+│   ├── 02_training_baseline.ipynb
+│   ├── 03_augmentation.ipynb
+│   └── 04_vit_recognition.ipynb
 ├── requirements.txt
 └── README.md
+```
 
 ---
 
